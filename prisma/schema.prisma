@@ -14,4 +14,12 @@ datasource db {
 model Roles {
   roleId Int @id@default(autoincrement())
   roleName String @unique
+  user Users?
+}
+
+model Users{
+  userId Int @id@default(autoincrement())
+  userName String @unique
+  roleRelationId Int @unique
+  rData Roles @relation(fields:[roleRelationId],references:[roleId],onDelete:Cascade,onUpdate:Cascade)
 }
