@@ -94,7 +94,7 @@ const paginationFunc=async(req,res)=>{
         res.status(200).json(responseData);
 
     }catch(err){
-        console.log("Error in GET FUNC ..",err);
+        console.log("Error in PAGINATION FUNC ..",err);
         errorData.Message=err.message
         res.status(400).json(errorData)
     }
