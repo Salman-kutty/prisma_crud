@@ -36,7 +36,7 @@ const getFunc= async(req,res)=>{
         responseData.Response=findAllData.length !==0 ? findAllData : "No Data Found In Database"
         res.status(200).json(responseData);
 
-    }catch(err){
+    }catch(err){Success
         console.log("Error in GET FUNC ..",err);
         errorData.Message=err.message
         res.status(400).json(errorData)
@@ -102,7 +102,7 @@ const paginationFunc=async(req,res)=>{
 
 const postOneToOneFunc=async(req,res)=>{
     try{
-        const data=await prisma.roles.create({data:req.body,include:{user:true}});
+        const data=await prisma.roles.create({data:{"roleName":req.body.roleName,user:{create:{userName:req.body.userName}}},include:{user:true}});
         responseData.Response=data
         res.status(201).json(responseData);
     }catch(err){
